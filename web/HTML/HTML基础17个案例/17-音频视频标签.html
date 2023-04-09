@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>音频标签</h2>
+    
+    
+    <!--controls 属性是一个布尔属性。
+    如果属性存在，它指定音频控件的显示方式。音视频控件包括：播放\暂停\进度条\音量-->
+    <p>
+        <audio src="D:\CloudMusic\Oasis - Songbird.mp3" controls>
+            对不起，您的浏览器不支持audio标签，请升级浏览器！
+            <!--如果浏览器不支持H5就会显示这行，如果支持就不会显示-->
+        </audio>
+    </p>
+
+    <!-- autoplay如果出现该属性，则音频在就绪后马上播放。-->
+    <p>
+        <audio src="D:\CloudMusic\Oasis - Songbird.mp3" controls autoplay>
+            对不起，您的浏览器不支持audio标签，请升级浏览器！
+        </audio>
+    </p>
+
+    <!--loop:如果出现该属性，则每当音频结束时重新开始播放。-->
+    <p>
+        <audio src="D:\CloudMusic\Oasis - Songbird.mp3" controls loop>
+            对不起，您的浏览器不支持audio标签，请升级浏览器！
+        </audio>
+    </p>
+
+    <!--muted:如果出现该属性，则音频输出为静音。-->
+    <p>
+        <audio src="D:\CloudMusic\Oasis - Songbird.mp3" controls muted>
+            对不起，您的浏览器不支持audio标签，请升级浏览器！
+        </audio>
+    </p>
+
+    <h2>视频标签</h2>
+    <p>
+        <video src="C:\Users\hunterrock\Pictures\cai.mp4" controls autoplay width="580">
+            对不起，您的浏览器不支持video标签，请升级浏览器！
+        </video>
+    </p>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="login.do" method="post">
+        <!--默认。定义一个单行的文本字段（默认宽度为 20 个字符）。-->
+        <p>请输入用户名：<input type="text"></p>
+        <!--value属性是默认值-->
+        <p>请输入用户名：<input type="text" value="admin"></p>
+        <!--placeholder是提示符-->
+        <p>请输入用户名：<input type="text" placeholder="请输入用户名"></p>
+        <!--disabled为禁用状态-->
+        <p>请输入用户名：<input type="text" value="admin" disabled></p>
+        <!--name 属性规定 input 元素的名称。
+        name 属性用于对提交到服务器后的表单数据进行标识，或者在客户端通过 JavaScript 引用表单数据。
+        注释：只有设置了 name 属性的表单元素才能在提交表单时传递它们的值。-->
+        <p>请输入用户名：<input type="text" value="admin" name="username"></p>
+        <!--password定义密码字段（字段中的字符会被遮蔽）。-->
+        <p>请输入密码：<input type="password"></p>
+        <!--radio定义单选按钮。-->
+        <p>请选择性别：
+            
+            <input type="radio" name="sex" value="1">男
+            <input type="radio" name="sex" value="2">女
+        
+        </p>
+        <!--checked 属性规定在页面加载时应该被预先选定的 input 元素。(默认值)
+        checked 属性 与 <input type="checkbox"> 或 <input type="radio"> 配合使用。
+        -->
+        <p>请选择性别：
+            
+            <input type="radio" name="sex2" value="1" checked>男
+            <input type="radio" name="sex2" value="2">女
+        
+        </p>
+        <!--id 在HTML中的作用是给一个单元(元素,标签)一个独一无二的标识或标记,让浏览器在分析处理网页时找到id所在的地方。并且要符合标识的要求,如大小写敏感,最好不要包含下划线(不兼容CSS)
+        id 一般用于css和js中引用,name用于表单提交,只有加了name属性的标签元素才会提交到服务器。    
+        -->
+        <!--<label> 标签为 input 元素定义标注（标记）。
+        label 元素不会向用户呈现任何特殊效果。不过，它为鼠标用户改进了可用性。如果您在 label 元素内点击文本，就会触发此控件。就是说，当用户选择该标签时，浏览器就会自动将焦点转到和标签相关的表单控件上。
+        label> 标签的 for 属性应当与相关元素的 id 属性相同。
+        -->
+        <p>
+            <input type="radio" name="sex3" id="boy" value="1">
+            <label for="boy">男</label>
+            <input type="radio" name="sex3" id="girl" value="2">
+            <label for="girl">女</label>
+
+        </p>
+
+        <p>
+        <!--鼠标的表现和前面都不一样-->
+            <label>
+                <input type="radio" name="sex4" value="1">男
+            </label>
+            <label>
+                <input type="radio" name="sex4" value="2">女
+            </label>
+        </p>
+        
+        <!--定义复选框。-->
+        <p>请勾选你的爱好：
+            <input type="checkbox" name="hobby" checked>唱歌
+            <input type="checkbox" name="hobby">游泳
+        </p>
+        <!--<select> 元素用来创建下拉列表。
+        <select> 元素中的 <option> 标签定义了列表中的可用选项。    
+        -->
+        <p>
+            <select name="bank">
+                <option value="1">中国银行</option>
+                <option value="2">工商银行</option>
+                <option value="3">建设银行</option>
+                <option value="4">农业银行</option>
+            </select>
+
+        </p>
+        <!--<textarea> 标签定义一个多行的文本输入控件。-->
+        <p>
+            <textarea name="content" cols="30" rows="10"></textarea>
+        </p>
+
+        <!--定义可点击的按钮（通常与 JavaScript 一起使用来启动脚本）。-->
+        <p>
+            <input type="button" value="按钮">
+        </p>
+
+        <!--定义提交按钮。-->
+        <p>
+            <input type="submit">
+        </p>
+
+        <!--定义重置按钮（重置所有的表单值为默认值）。-->
+        <p>
+            <input type="reset">
+        </p>
+    </form>
+
+</body>
+</html>
