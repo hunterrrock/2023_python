@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise对象</title>
+</head>
+
+<body>
+    <div>
+
+
+        <p>
+            同步：任务提交之后，原地等待任务的返回结果，等待的过程中不做任何事情
+            异步：任务提价之后，不在原地等待任务的返回结果，而是直接去做其他事情；任务的返回结果会有一个异步回调机制自动处理，就是异步提交的任务他会自动拿到这个返回结果去处理
+
+            什么是异步操作：
+            同步指的是一次只能完成一件任务。如果有多个任务，就必须排队，前面一个任务完成，再执行后面一个任务，以此类推。
+            异步指的是每一个任务有一个或多个回调函数（callback），前一个任务结束后，不是执行后一个任务，而是执行回调函数，后一个任务则是不等前一个任务结束就执行，所以程序的执行顺序与任务的排列顺序是不一致的、异步的。
+
+            promise对象是异步编程的一种解决方案，比传统的解决方案（回调函数和时间）更合理和更强大。
+            三个步骤：
+            创建promise对象
+            异步执行then方法
+            异步执行catch方法，捕获异常
+
+            最基本的用法我们先用到 reject(英文:拒绝) resolve(英文:决定,决心) 我们通常认为 reject是不通过 , resolve是通过
+            
+
+            promise对象要点：
+            1.promise对象是用于执行异步操作的
+            2.可以使用promise构造函数来创建实例对象
+            3.promise对象的.then方法调用后，返回的还是一个promise对象
+            4.promise对象的.catch方法调用后，返回的还是一个promise对象
+
+        </p>
+    </div>
+</body>
+<script>
+    //步骤一：创建promise对象
+    /* 
+    要点：
+        1.new一个构造函数，来创建promise对象
+        2.构造函数的参数，是一个函数【参数是函数，最经常用箭头函数】，它负责执行业务（这个业务逻辑不管要处理多久都不管，不阻碍其他任务执行）
+        3.参数里的这个函数 接收两个函数作为参数：resolve和reject
+        4.第一个参数:是resolve（成功的）函数
+        5.第二个参数：是reject（拒绝的）函数
+    */
+    const p1 = new Promise((resolve, reject) => {
+
+        console.log('1.异步请求开始，异步讨债开始')
+        //处理发送请求的代码逻辑....返回一个结果是成功还是失败我们需要做一个判断
+
+        //请求结束：（这里我们假设回来的是true）
+        const flag = true
+        if (flag) {
+            resolve(['异步请求响应回来了，讨债成功！','100元'])//【业务成功后调用】
+        } else {
+            throw new Error('4.人为模拟异常...')
+
+            reject('异步请求响应回来了，讨债失败！')//【业务失败后调用】
+        }
+    })
+
+    //步骤2：调用异步执行.then方法【异步回调函数】
+    /* 
+    要点：
+    1.then方法，接收2个函数作为参数，但第二个参数是可选的
+    2.当resolve方法调用时时，【成功时你要干嘛】会触发then的第一个参数
+    3.当reject方法调用时，【失败时你要干嘛】会触发then的第二个参数（可选的，如果没有定义，那么就不会调用）
+    */
+    const p2 = p1.then((a) => {
+        console.log('3.进来了then的第一个方法',a)
+
+    }, () => {
+        console.log('3.进来了then的第二个方法')
+        //模拟一个异常 让catch捕获
+        throw new Error('4.人为模拟异常...')
+
+    })
+
+    console.log('2.会先执行这个，底部的代码调用了')
+
+    //步骤3：调用catch方法
+    /* 
+    promise对象的catch方法，接收一个函数参数，为异步回调函数，当异常时，你要干嘛
+    当前面的步骤1或者步骤2出现了异常 就可以到步骤三捕获异常
+    
+    1.catch方法，接收1个函数作为参数
+    2.当【前面的】方法中有异常时，触发catch(可以是前面步骤1 的p1，也可以是步骤2的p2)
+    */
+    const p3 = p1.catch(() => {
+
+        console.log('p1异常啦！catch方法被调用了')
+
+    })
+
+    const p4 = p2.catch(() => {
+
+        console.log('p2异常啦！catch方法被调用了')
+
+    })
+</script>
+
+</html>
