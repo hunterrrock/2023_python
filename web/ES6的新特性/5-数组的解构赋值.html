@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组的解构赋值</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //数组的解构赋值
+/*     es6之前
+    var a = 10 
+    var b = 20 
+    var c = 30  */
+
+
+    // es6之后,可以以变量的解构赋值形式（模式匹配）来一行代码解决，不再需要三行代码
+    let [a,b,c]= [10,20,30]  //用var也可以
+    console.log('变量a的值为:',a)    
+
+    //数组嵌套 解构赋值
+    let [a1,[b1,d1],c1]= [10,[20,40],30]  //用var也可以
+    console.log('变量b1的值为:',b1)    
+    console.log('变量d1的值为:',d1)    
+
+    //不完全解构-左边残缺
+    let [A1,,C1] = [10,[20],30]   //左边如果留了位置(,)C1就是30，如果没有留位置就是[20]
+    console.log('变量CC1的值为：',C1)
+    console.log('变量AA1的值为：',A1)
+
+    //不完全解构-右边残缺
+    let [D1,E1,F1] = [11,33]
+    console.log('变量D1的值为：',D1)
+    console.log('变量E1的值为：',E1)
+    console.log('变量F1的值为：',F1)    //F1找不到，F1值就是undefined
+    
+    //undefined
+    let x               //x的值是undefined，说明x已经声明了，只是没有赋初值
+    console.log('x的值是：',x)
+</script>
+</html>

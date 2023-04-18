@@ -1,0 +1,13 @@
+1、ECMA（欧洲计算机制造商协会）设置了JavaScript的标准规范，命名为ECMAScript
+2、2015年及往后的每年发布的版本都为ES6（是一个历史名词，一个泛指）
+3、ES6新特性之-数据类型
+    新增Symbol、BigInt、Map、Set、RegExp等数据类型
+    JavaScript中的两大数据类型：基本数据类型、复杂数据类型（又叫引用数据类型）
+    基本数据类型：
+    Number数字、String字符串、Boolean布尔、Undefined未定义、Null空、Symbol（用的非常少，只有一些底层代码才会看到）、BigInt
+    引用数据类型:
+    Object对象、Array数组、Function函数、Date日期、Map、Set、RegExp正则（regular expression）
+
+    Number类型：如果数据太长了，会丢失精度，被抹零；而BigInt可以解决这个问题
+
+为什么要把数据分为两类呢？（基本数据类型和引用数据类型）

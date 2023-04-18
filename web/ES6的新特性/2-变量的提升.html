@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>变量的提升（var指令的bug2）</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+    console.log('变量C的值为',c)    //变量C的值为 undefined (undefined在js中是一个基本数据类型)
+    var c = '樱木花道'
+
+    console.log('变量D的值为',d) 
+    let d = '流川枫'        //2-变量的提升.html:55 Uncaught ReferenceError: Cannot access 'd' before initialization
+</script>
+</html>

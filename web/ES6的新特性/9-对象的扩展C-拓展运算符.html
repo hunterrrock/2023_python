@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象的扩展C-拓展运算符</title>
+</head>
+<body>
+    
+</body>
+<script>
+/*     要点：1、三个点，表示扩展运算符（...）
+          2、它可以用于对象 和数组
+          3、用来干什么？A.合并对象
+          
+          
+*/
+
+    const z = {a:10,b:20}
+    const n = {c:30}
+
+    //需求是：对象n，有abc三个属性。
+    const j = { ...z,...n}   //像python中的解包
+    console.log("j的值是：",j)
+
+    //这种方法是浅拷贝，凡是拓展运算符这种做法的都是浅拷贝
+
+</script>
+</html>

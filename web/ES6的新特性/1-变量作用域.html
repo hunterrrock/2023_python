@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>变量的作用域（var指令的bug1）</title>
+</head>
+<body>
+</body>
+
+<script>
+    // js代码放在script标签下
+    var name ='马云'   //全局，顶局变量
+
+    //代码块，块作用域
+    {
+
+        var a = 10
+        let b = 10
+
+    }
+    console.log('变量a的值',a)   //console.log类似于python的print，可以在F12的console中看到我们打印的日志
+    console.log('变量b的值',b)
+    //1-变量作用域.html:62 Uncaught ReferenceError: b is not defined  at 1-变量作用域.html:62:25
+    // 在这个例子中可以看到a的值被打印出来了，b报错了。但实际上var a处于代码块域中，不应该在代码块外被打印，而let b职责被履行，并没有在代码块域外被定义
+    
+    {
+
+        var c = 11
+        let d = 13
+
+    }
+
+    {
+        console.log('变量C的值',c)
+        console.log('变量D的值',d)
+
+    }
+
+</script>
+</html>
