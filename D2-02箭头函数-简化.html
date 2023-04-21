@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>箭头函数-简化</title>
+</head>
+
+<body>
+</body>
+<script>
+    //函数1简化前
+    const student = () => {
+
+        return { 'name': '张三', age: 25 }
+
+    }
+    //简化后,形参无法优化，函数体可以优化
+    const student2 = () =>
+        ({ 'name': '张三', age: 25 })
+
+
+    //函数2简化前
+    const say = (msg) => {
+
+        return `模板字符串${msg}`
+
+    }
+
+    //简化后，可以将形参的（）给省略，函数体可以简化
+    const say2 = msg =>`模板字符串${msg}`
+
+    //函数3
+    const add2 = (a, b) => {
+
+        return a + b
+    }
+
+    //简化后，形参无法简化，函数体可以简化
+    const add3 = (a, b) => a + b
+
+
+    console.log('函数1的返回值：', student())
+    console.log('函数2的返回值：', say('hello'))
+    console.log('函数3的返回值：', add2(2, 7))
+
+    console.log('简化后函数1的返回值：', student2())
+    console.log('简化后函数2的返回值：', say2('hello'))
+    console.log('简化后函数3的返回值：', add3(2, 7))
+
+    //2个简化：形参、函数体
+
+
+    // 形参简化：
+    // 1.当只有一个参数时，（）可以省略
+    // 2.如果没有参数，()必须写
+    // 3.如果有多个参数，（）也必须写
+
+    // 函数体简化：
+    // 1.函数体中，如果只有一条【返回】语句时，那么：{}和return  都可以省去。
+    // 2.函数体中，如果只有一条 语句时，那么{}可以省去。
+    // 3.函数体中，有多条语句，无法简化
+    // 4.特殊情况，简化之后，如果函数返回的是一个对象？ {}  那就给他加一对（）
+
+
+    const add5 = function(a,b,c){
+        console(a)
+        console(b)
+        console(c)
+        let r = a+b+c
+    }
+
+    //简化后：
+    const add6 = (a,b,c)=>{
+        console(a)
+        console(b)
+        console(c)
+        let r = a+b+c
+    }
+
+</script>
+
+</html>

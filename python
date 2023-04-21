@@ -1,0 +1,19 @@
+相关框架：
+JAVA:sprintboot、sprintCloud、Dubbo
+python：Django、Flask、FastAPI
+数据库：Oracle MySQL MariaDB MongoDB Redis
+运维 Tomcat、weblogic、Nginx、Docker、k8S
+测试 web/app/api 自动化
+大数据
+
+项目部署（CI/CD流程）
+传统部署：一台linux服务器（虚拟机），装python（虚拟环境中，装我们依赖的库，nginx，mysql，redis，[uwsgi库启动项目]
+容器部署：docker容器
+自动化部署：git、Jenkins
+locust分布式性能平台  从0开始，教大家如何用locust做性能测试
+loadTp性能测试平台
+
+sq010 100048
+sq011 100053
+sq012 100058
+sq013 100063

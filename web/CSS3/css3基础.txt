@@ -27,6 +27,11 @@ CSS就是样式的“清单”。要书写合适的选择器，然后用选择�
 CSS并没有加减乘除、或与非、循环、判断。CSS不是编程，仅仅是直截了当的罗列样式
 背熟CSS的属性，非常的重要，属性的熟练程度，决定了做网页的速度
 
+语法：
+样式的内容写在{}里
+前面表示页面 后面表示取值以 k:v格式，多个值用;分割
+#table {color:blue;}
+div{color:blue;}
 CSS的书写位置
 三种方式：
 1、内嵌式：(直接在HTML文档里写入)在<head>的<style>标签中，书写CSS代码(如果是简单的样式，只有这个文档用的，可以这样写)
@@ -49,3 +54,157 @@ CSS的书写位置
 如果是整个网站，不同页面的一些样式是公用的，我们可以写在.css文件里，在每个HTML里引用进来，如果后续要修改字体或者样式，只需要去修改.css文件
 但是对于有一些只是我单独这个页面用的，其他页面用不到的，我这个页面独特的地方就可以放在head里的style标签；
 甚至有些只有这一行代码要用到的，其他地方都用不到的就可以用方式3.行内式
+注意：行内式会覆盖内嵌式
+
+CSS选择器：   示例中的1-1、1-2、1-3
+1、标签选择器
+也称为元素选择器、类型选择器。它直接使用元素的标签名当做选择器，选择的是页面上所有的该种标签，无论这个标签所在位置的深浅。
+例如：
+span{
+    color:red;
+}
+这个所有网站的span标签的颜色都会替换为red
+
+2、id选择器
+当我们不想所有的元素都是一个样式，例如有三个div我们想要三个有三个不同的样式，就可以使用id使用器
+css选择器可以使用#id名称（井号+id的名称），来制定id的标签
+id如果重复了，后面的会把前面的覆盖，所以id最好是唯一的
+例：
+<head>
+    <style>
+        #content {color: red;}
+        #table {color: black;}
+        #footer {color: darkorchid;}
+    </style>
+</head>
+
+<body>
+    <div id="content">content
+        <div id="table">
+    <div id="footer">footer</div>
+
+3、class属性
+class属性，表示 类名
+类名的命名规范，和id属性的命名规范相同。和id属性不同的是多个标签，可以有相同的类名
+css选择器 选择class属性用 .class名称（点号+class的名称），来选择指定class的标签
+
+<head>
+    <style>
+        .c1 {color: blueviolet;}
+        .c2 {color: burlywood;}
+    </style>
+</head>
+<body>
+    <div id="content" class="c1">content
+        <div id="table" class="c2">
+    <div class="c1" >right</div>
+    <div id="footer"  class="c1">footer</div>
+
+class类名特点1：
+多个标签可以是相同的类名，
+class类名特点2：
+一个标签可以同时指定多个类，类名之间用空格隔开
+<head>
+    <style>
+        .spec {font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
+    </style>
+</head>
+<body>
+        <div class="c1 spec" >right</div>
+        <div id="table" class="c2 spec">
+            <table border="2">
+</body>
+
+原子类：类似于封装为公共类，一些常见的公用的属性我们可以封装起来
+在做网页项目时，可以将所有的常用字号、文字颜色、行高、外边距、内边距等，都设置为单独的类
+定义原子类后，HTML标签就可以”按需选择“它的类名了，这样就可以非常快速的添加一些常用的样式
+ <head>
+    <style>
+        .f12 {font-size: 12px;}
+        .f14 {font-size: 14px;}
+        .f16 {font-size: 16px;}
+        .color-red {color: red;}
+        .color-blue {color: blue;}
+        .color-pink {color: pink;}
+    </style>
+</head>
+<body>
+    <div class='f12 color-red'>logo</div>
+    <p class='f14 color-blue'>今天是周二</p>
+
+4、复合选择器的分类：
+其实就是将前面的 标签选择器，id选择器，类选择器 复合在一起
+选择器名称         示例          含义
+后代选择器（主要体现在不止儿子，孙子也可以选择）        .box .spec    选择类名为box的标签内部的类名为spec的标签;指定一层层的关系;中间空格隔开
+                 或者 标签套标签 li li 
+                 使用空格表示“后代”，后代并不一定只是一层嵌套关系，也可以是祖和孙的关系（隔了一代》
+                选择类名为list标签的后代li标签  .list li {}
+    嵌套的关系
+    <head>
+        <style>
+            .box .spec .t1 {color:red}
+            .box .spec .t2 {color:blue}
+        </style>
+    </head>
+    <body>
+        <div class='box'>
+            <div class = 'spec'>
+                <table class= 't1'></table>
+                <table class = 't2'></table>
+            </div>
+        </div>
+    </body>
+    或者：
+    <head>
+        <style>
+            li {list-style-type: disc;}
+            li li {list-style-type: circle;}
+        </style>
+    </head>
+
+    <body>
+        <ul>
+            <li>
+                <div>Item 1</div>
+                <ul>
+                <li>Subitem A</li>
+                <li>Subitem B</li>
+                </ul>
+            </li>
+            <li>
+                <div>Item 2</div>
+                <ul>
+                <li>Subitem A</li>
+                <li>Subitem B</li>
+                </ul>
+            </li>
+         </ul>
+交集选择器        li.spec       选择即是Li标签，也属于spe类的标签   
+                选择含有.spec类的span标签，应该使用交集选择器
+                                span.spec {}
+并集选择器        ul,ol         选择所有ul和ol标签;也叫做分组选择器，逗号表示分组
+                 p,ul {}  --》把所有p和ul标签赋予样式
+
+
+5、关系选择器：
+三种关系选择器
+名称              例子                 含义
+子选择器          div>p               div的子标签p
+相邻兄弟选择器     img+p               图片后面紧跟着的段落将被选中
+通用兄弟选择器     p~span              p元素之后的所有同层级span元素
+
+
+6、属性选择器
+例如：
+a[title]      选择有title属性的a标签
+a[title='中国']      选择title属性为中国的a标签
+a[title^='杭州']     选择title属性值以杭州开头的a标签
+a[title$='南京']     选择title属性值以南京结尾的a标签
+a[title*='上海']        选择title属性值包含了上海的a标签
+a[title~='广东']          选择title属性值以空格隔开的，有广东字样的a标签
+a[title| ='海南']       选择title属性值以“海南-”开头的a标签
+
+
+层叠性权重
+如果多个选择器定义的属性有冲突，CSS提供了有严密的冲突处理规则：
+id权重>class权重>标签权重

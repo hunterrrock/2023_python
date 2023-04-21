@@ -7,16 +7,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        div {
-            color: blue;
+        /* #content {color: red;}
+        #table {
+            color: black;
+            font-size:smaller;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            background-color: burlywood;
         }
+        #footer {color: darkorchid;} */
+/* 
+        .c1 {color: blueviolet;font-size: xx-large;}
+        .c2 {color: burlywood;font-size: x-large;font-weight: 900;}
+        .spec {font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;} */
+
+        .f12 {font-size: 12px;}
+        .f14 {font-size: 14px;}
+        .f16 {font-size: 16px;}
+        .color-red {color: red;}
+        .color-blue {color: blue;}
+        .color-pink {color: pink;}
     </style>
 </head>
 
 <body>
-    <div style="color: brown;width: 2000;height: 200px;">logo</div>
-    <div>content
-        <div>
+    <div style="color: brown;width: 2000;height: 200px;" id="logo">logo</div>
+    <div id="content" class="c1">content
+        <div id="table" class="c2 spec">
             <table border="2">
                 <tr>
                     <td>乔瑟夫</td>
@@ -31,15 +47,15 @@
             </table>
         </div>
     </div>
-    <div>
+    <div id="form">
         <center>
             <form action="login.login" method="post"></form>
             <input type="text" name="text" value="请输入一个数字" id="1">
             <input type="submit" name="submit" id="1" checked>
         </center>
     </div>
-    <div>right</div>
-    <div>footer</div>
+    <div class="c1 spec" >right</div>
+    <div id="footer"  class="c1">footer</div>
 </body>
 
 </html>
