@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象的扩展A-属性的简写</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 对象的扩展：属性的简写
+    //当属性名和属性值名称相同时，触发对象属性的简写
+    let name = '大花'
+    let ah = ['吃','睡觉']
+
+    //对 对象进行简写，复杂在什么地方？name:name.
+    const person = {
+        // name :name,
+        name,
+        age:22,
+        eat :function(){
+            return '三顿饭'
+        },
+        hobby:ah    //这里不能简写，除非将ah改为hobby
+
+
+
+
+
+
+    }
+
+
+
+</script>
+</html>

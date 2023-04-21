@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象的扩展B-方法的简写</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //方法的简写
+    //方法就是无条件的触发简写的 ，去掉function关键字以及它的冒号
+
+    let name = '大花'
+    let hobby = ['吃','睡觉']
+    
+    //简写前：
+    const person = {
+        name :name,
+        name,
+        age:22,
+        eat :function(){
+            return '三顿饭'
+        },
+        hobby  
+    }
+    //简写后：
+    const person2 = {
+        name :name,
+        name,
+        age:22,
+        eat(){
+            return '三顿饭'
+        },
+        hobby  
+    }
+    console.log(person2)
+</script>
+</html>

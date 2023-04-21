@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>const指令</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+
+/*     常量的定义：
+    1、一旦声明就不允许“改变 ”
+    2、声明时，必须要赋初值
+    3、 
+        对：基本数据类型，【栈值】就不能改变
+        对：引用数据类型，【栈地址】就不能改变，【堆值】可以改变
+        总结：栈内容不能变，堆内容可以变
+    什么是常量呢？栈值不变的就是常量        
+*/
+    const obj1 = {}
+    obj1.name = '小杰'  //改变了obj1的堆值
+    console.log(obj1)
+
+/*     obj1 = {age:17}
+    console.log(obj1) */
+    //4-const指令.html:66 Uncaught TypeError: Assignment to constant variable.
+
+    const message = []
+    message.push('hello')
+    message.push('world')
+    console.log(message)
+
+    message = ['abc']
+    console.log(message)
+
+    
+</script>
+</html>

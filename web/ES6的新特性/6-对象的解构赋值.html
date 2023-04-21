@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象的解构赋值</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // let obj = { name:'布加拉提',age:22}
+
+/*     let name = '布加拉提'
+    let age = 22 */
+
+    //name是对象的属性名，age是对象的属性值
+    let {name,age} = { name:'布加拉提',age:22}
+    console.log('name的值为：',name)
+    console.log('age的值为：',age)
+
+    //与属性名的位置无关，且如果使用简写的话，左右的属性名要一致
+    let {age1,name1} = {name1:'乔瑟夫',age1:18}
+    console.log('name1的值为：',name1)
+    console.log('age1的值为：',age1)
+
+    //不使用简写,需要模式匹配
+    //左边的name和age是模式， xm和nl才是属性名   
+    let {name:xm,age:nl } = {name:'承太郎',age:20}
+    console.log('xm的值为：',xm)
+    console.log('nl的值为：',nl)
+
+    //不完全解构
+    let {a1,b1} = {a1:12}
+    console.log('b1的值是：',b1)
+</script>
+</html>
