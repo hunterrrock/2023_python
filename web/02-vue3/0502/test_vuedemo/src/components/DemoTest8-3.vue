@@ -1,9 +1,15 @@
 <template>
     <div>
-        <!-- v-model指令-绑定文本框 ：用于HTML元素的表单绑定;只能绑定value属性，所以value可以省略
-        v-model就是语法糖，实际上就是：v-bind:value + v-on:Input的组合 -->
-        <p>姓名<input type="text"  v-model.trim='name'></p>
-        <p>年龄<input type="text"  v-model.number='count'></p>
+        <!-- v-model指令：绑定当选按钮-->
+        <p>爱好：
+            打篮球<input type="checkbox" name='aihao' value='打篮球' v-model='hobby'>
+            踢足球<input type="checkbox" name='aihao' value='踢足球' v-model='hobby'>
+            唱歌<input type="checkbox" name='aihao' value='唱歌' v-model='hobby'>
+            
+        </p>
+
+
+
         <p><button @click="submit">保存</button></p>
     </div>
 </template>
@@ -15,7 +21,7 @@ export default {
     setup () {
         const state = reactive({
             count: 0,
-            name:'塞尔达'
+            hobby: []
         })
         const submit =()=>{
             console.log('state对象的内容为：',state)
