@@ -15,21 +15,12 @@
           <div class="info-message">
             <p class="message-item">
               <thy-icon class="icon thy-icon-phone thy-icon">
-                <svg
-                  viewBox="0 0 16 16"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fit=""
-                  height="1em"
-                  width="1em"
-                  preserveAspectRatio="xMidYMid meet"
-                  focusable="false"
-                >
-                  <g id="punormal/phone" stroke-width="1" fill-rule="evenodd">
-                    <path
-                      d="M2.948.755l-.428.274C.515 2.268 1.313 6.648 3.997 10.577c2.606 3.815 6.326 6.24 8.322 5.21l.648-.379c.807-.482 1.233-.88 1.477-1.466.36-.865.093-1.788-.712-2.73-1.228-1.436-2.316-1.865-3.55-1.304l-.112.053a5.415 5.415 0 0 0-.375.208l-.231.143-.068-.05a3.333 3.333 0 0 1-.28-.25c-.404-.395-.909-1.024-1.445-1.809-.527-.771-.923-1.459-1.142-1.966l-.051-.125-.054-.147-.027-.084.185-.114c1.496-.94 1.688-2.128.665-4.048C6.775.832 6.18.275 5.447.089L5.275.053c-.75-.128-1.367.082-2.327.702zm2.127.48c.395.069.764.392 1.113 1.048.716 1.344.675 1.85-.136 2.397l-.303.192-.233.143c-.772.475-.261 1.74 1.019 3.65l.145.215c1.38 2.018 2.437 3.056 3.226 2.57l.413-.256.196-.112c.058-.031.112-.058.163-.081.665-.303 1.225-.081 2.143.992.538.63.676 1.104.516 1.487-.112.268-.33.488-.814.794l-.702.417c-1.199.74-4.494-1.365-6.833-4.79-2.34-3.426-3.014-7.124-1.83-7.855l.442-.284c.73-.471 1.086-.592 1.475-.526z"
-                      id="pu路径"
-                    ></path>
-                  </g>
+                <!-- 这里是一个svg开头svg结尾，的一个svg源码的图标 -->
+                <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" data-v-ea893728="">
+                  <path
+                    fill="currentColor"
+                    d="M224 768v96.064a64 64 0 0 0 64 64h448a64 64 0 0 0 64-64V768H224zm0-64h576V160a64 64 0 0 0-64-64H288a64 64 0 0 0-64 64v544zm32 288a96 96 0 0 1-96-96V128a96 96 0 0 1 96-96h512a96 96 0 0 1 96 96v768a96 96 0 0 1-96 96H256zm304-144a48 48 0 1 1-96 0 48 48 0 0 1 96 0z"
+                  ></path>
                 </svg>
               </thy-icon>
               <span>400-000-0000请替换为elementplus-icon图标</span>
@@ -77,7 +68,9 @@
                   <el-form :model="loginForm" :rules="rules" label-width="0px">
                     <el-form-item label="" prop="username">
                       <el-input v-model="username" placeholder="请输入用户名">
-                        <template #prepend>图1</template>
+                        <template #prepend
+                          ><el-icon><User /></el-icon
+                        ></template>
                       </el-input>
                     </el-form-item>
 
@@ -121,8 +114,14 @@
 
 <script>
 import { reactive, toRefs, ref } from 'vue'
+// 导入想要的图标
+// <el-icon><User /></el-icon>
+// <el-icon><Platform /></el-icon>
+// <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" data-v-ea893728=""><path fill="currentColor" d="M512 160c320 0 512 352 512 352S832 864 512 864 0 512 0 512s192-352 512-352zm0 64c-225.28 0-384.128 208.064-436.8 288 52.608 79.872 211.456 288 436.8 288 225.28 0 384.128-208.064 436.8-288-52.608-79.872-211.456-288-436.8-288zm0 64a224 224 0 1 1 0 448 224 224 0 0 1 0-448zm0 64a160.192 160.192 0 0 0-160 160c0 88.192 71.744 160 160 160s160-71.808 160-160-71.744-160-160-160z"></path></svg>
+import { User } from '@element-plus/icons-vue'
 
 export default {
+  components: { User },
   setup() {
     // 1.定义登录时候提交用的form对象
     const loginForm = reactive({
