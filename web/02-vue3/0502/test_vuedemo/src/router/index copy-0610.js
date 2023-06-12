@@ -1,7 +1,7 @@
 // 1.从vue-router中，导入createRouter和createWebHistory方法
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
-// 2.导入Home和Login组件
-import Home from '../views/Home.vue'
+// 2.导入HomeView组件
+import HomeView from '../views/HomeView.vue'
 
 // 3.使用createRouter方法，创建一个路由对象
 const router = createRouter(
@@ -20,15 +20,15 @@ const router = createRouter(
       {
         path: '/',    //根路由，路由路径
         name: 'home',    //路由的名称
-        component: Home,   //路由对应的组件
+        component: HomeView,   //路由对应的组件
+        // redirect: '/about'   //重定向
       },
       {
-        path: '/login',
-        name: 'login',
+        path: '/about',
+        name: 'about',
         // route level code-splitting    路由级代码拆分
         // this generates a separate chunk (About.[hash].js) for this route   这将为此路由生成一个单独的模块（about.【一串哈希值hash】.js)
-        // which is lazy-loaded when the route is visited.    当访问路由时，是懒加载的，只有当有人访问的时候才会加载，不会事先加载
-        // 总结：路由懒加载方式，项目打包时，一个组件打包成一个js文件；多少个组件就打包成多少个js文件，访问时才加载组件。
+        // which is lazy-loaded when the route is visited.
         component: () => import('../views/AboutView.vue')
       }
     ]
