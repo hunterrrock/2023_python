@@ -88,7 +88,7 @@
 
                     <el-form-item label="">
                       <el-input v-model="captcha" placeholder="请输入验证码">
-                        <template #prepend>图3</template>
+                        <template #prepend><Edit style="width: 1em; height: 1em; margin-right: 8px" /></template>
                       </el-input>
                     </el-form-item>
 
@@ -118,10 +118,10 @@ import { reactive, toRefs, ref } from 'vue'
 // <el-icon><User /></el-icon>
 // <el-icon><Platform /></el-icon>
 // <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" data-v-ea893728=""><path fill="currentColor" d="M512 160c320 0 512 352 512 352S832 864 512 864 0 512 0 512s192-352 512-352zm0 64c-225.28 0-384.128 208.064-436.8 288 52.608 79.872 211.456 288 436.8 288 225.28 0 384.128-208.064 436.8-288-52.608-79.872-211.456-288-436.8-288zm0 64a224 224 0 1 1 0 448 224 224 0 0 1 0-448zm0 64a160.192 160.192 0 0 0-160 160c0 88.192 71.744 160 160 160s160-71.808 160-160-71.744-160-160-160z"></path></svg>
-import { User } from '@element-plus/icons-vue'
+import { User,Edit } from '@element-plus/icons-vue'
 
 export default {
-  components: { User },
+  components: { User,Edit },
   setup() {
     // 1.定义登录时候提交用的form对象
     const loginForm = reactive({
