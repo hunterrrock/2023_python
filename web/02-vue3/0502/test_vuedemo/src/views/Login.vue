@@ -122,7 +122,8 @@ import { reactive, toRefs, ref } from 'vue'
 // <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" data-v-ea893728=""><path fill="currentColor" d="M512 160c320 0 512 352 512 352S832 864 512 864 0 512 0 512s192-352 512-352zm0 64c-225.28 0-384.128 208.064-436.8 288 52.608 79.872 211.456 288 436.8 288 225.28 0 384.128-208.064 436.8-288-52.608-79.872-211.456-288-436.8-288zm0 64a224 224 0 1 1 0 448 224 224 0 0 1 0-448zm0 64a160.192 160.192 0 0 0-160 160c0 88.192 71.744 160 160 160s160-71.808 160-160-71.744-160-160-160z"></path></svg>
 import { User, Edit } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
-import request from '@/utils/request'
+// import request from '@/utils/request'
+import {login} from '@/utils/api'
 export default {
   components: { User, Edit },
   setup() {
@@ -183,7 +184,7 @@ export default {
       // 1.对参数进行校验
 
       // 2.调用封装好的,并且把token保存到localStorage里
-      // login({}).then((res) => {
+      // login({loginForm}).then((res) => {
       //   // =赋值
       //   // ==值相等
       //   // ===值相等并且类型一致
@@ -203,12 +204,26 @@ export default {
       //   }
       // })
 
-      request({
-        url: '/token/',
-        method: 'post',
-        data: loginForm
-      }).then((res) => {
-        if (res.data.code === 200) {
+      // request({
+      //   url: '/token/',
+      //   method: 'post',
+      //   data: loginForm
+      // }).then((res) => {
+      //   console.log(res)
+      //   if (res.data.code === 200) {
+      //     localStorage.setItem('loginToken', res.data.data.access)
+      //     localStorage.setItem('refresh', res.data.data.refresh)
+      //     localStorage.setItem('userId', res.data.data.userId)
+      //     localStorage.setItem('userName', res.data.data.username)
+      //     ElMessage.success('登录成功')
+      //   } else {
+      //     ElMessage.error('res.data.msg')
+      //   }
+      // })
+      login(loginForm).then((res)=>{
+          console.log(res)
+          console.log("loginForm",loginForm)
+          if (res.data.code === 200) {
           localStorage.setItem('loginToken', res.data.data.access)
           localStorage.setItem('refresh', res.data.data.refresh)
           localStorage.setItem('userId', res.data.data.userId)
@@ -217,6 +232,7 @@ export default {
         } else {
           ElMessage.error('res.data.msg')
         }
+
       })
     }
 

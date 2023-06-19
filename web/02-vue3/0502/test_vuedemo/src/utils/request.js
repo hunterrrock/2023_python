@@ -10,7 +10,7 @@ const request = axios.create({
     headers: {}
 })
 
-// 添加请求拦截器
+// 添加请求拦截器【我们可以在它里面为请求添加一些自定义的内容】
 // token 和密钥在这一步处理
 axios.interceptors.request.use((config) => {
     // 在发送请求之前做些什么
