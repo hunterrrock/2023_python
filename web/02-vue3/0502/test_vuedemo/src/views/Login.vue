@@ -88,7 +88,9 @@
 
                     <el-form-item label="">
                       <el-input v-model="captcha" placeholder="请输入验证码">
-                        <template #prepend><Edit style="width: 1em; height: 1em; margin-right: 8px" /></template>
+                        <template #prepend
+                          ><Edit style="width: 1em; height: 1em; margin-right: 8px"
+                        /></template>
                       </el-input>
                     </el-form-item>
 
@@ -118,14 +120,15 @@ import { reactive, toRefs, ref } from 'vue'
 // <el-icon><User /></el-icon>
 // <el-icon><Platform /></el-icon>
 // <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" data-v-ea893728=""><path fill="currentColor" d="M512 160c320 0 512 352 512 352S832 864 512 864 0 512 0 512s192-352 512-352zm0 64c-225.28 0-384.128 208.064-436.8 288 52.608 79.872 211.456 288 436.8 288 225.28 0 384.128-208.064 436.8-288-52.608-79.872-211.456-288-436.8-288zm0 64a224 224 0 1 1 0 448 224 224 0 0 1 0-448zm0 64a160.192 160.192 0 0 0-160 160c0 88.192 71.744 160 160 160s160-71.808 160-160-71.744-160-160-160z"></path></svg>
-import { User,Edit } from '@element-plus/icons-vue'
-
+import { User, Edit } from '@element-plus/icons-vue'
+import { ElMessage } from 'element-plus'
+import request from '@/utils/request'
 export default {
-  components: { User,Edit },
+  components: { User, Edit },
   setup() {
     // 1.定义登录时候提交用的form对象
     const loginForm = reactive({
-      username: 'admin',
+      username: 'songqin',
       password: 'admin',
       captcha: '9999',
       captchkey: ''
@@ -154,9 +157,67 @@ export default {
     //5.模板引用（表单引用）
     const ruleFormRef = ref(null)
 
-    // 6.登录
+    // // 6.登录
     const onSubmit = () => {
-      console.log(loginForm.username)
+      // console.log(loginForm.password)
+
+      //   // 消息组件
+      //   // ElMessage.success('登录成功')
+      //   ElMessage({ type: 'success', message: '登录成功了' })
+      //   ElMessage.error('登录失败')
+      //   ElMessage.info('请输入密码')
+      //   ElMessage.warning('不要XXX')
+
+      //   // 本地存储
+      //   // 新增保存
+      //   localStorage.setItem('username', 'yan')
+      //   localStorage.setItem('userid', '123')
+      //   // 获取
+      //   console.log(localStorage.getItem('username'))
+      //   // 删除
+      //   localStorage.removeItem('userid')
+      //   // 清空所有
+      //   localStorage.clear()
+      // }
+      // 使用封装的axios
+      // 1.对参数进行校验
+
+      // 2.调用封装好的,并且把token保存到localStorage里
+      // login({}).then((res) => {
+      //   // =赋值
+      //   // ==值相等
+      //   // ===值相等并且类型一致
+      //   if (res.code === 200) {
+      //     // console.log('response对象为：', res)
+      //     // console.log('Token的值为：', res.data.access)
+      //     // console.log('userId为', res.data.userId)
+      //     // console.log('userName为', res.data.username)
+      //     // console.log('刷新token值为', res.data.refresh)
+      //     localStorage.setItem('loginToken', res.data.access)
+      //     localStorage.setItem('refresh', res.data.refresh)
+      //     localStorage.setItem('userId', res.data.userId)
+      //     localStorage.setItem('userName', res.data.username)
+      //     ElMessage.success('登录成功')
+      //   } else {
+      //     ElMessage.error('res.data.msg')
+      //   }
+      // })
+
+      request({
+        url: '/token/',
+        method: 'post',
+        data: loginForm
+      }).then((res) => {
+        if (res.data.code === 200) {
+          localStorage.setItem('loginToken', res.data.data.access)
+          localStorage.setItem('refresh', res.data.data.refresh)
+          localStorage.setItem('userId', res.data.data.userId)
+          localStorage.setItem('userName', res.data.data.username)
+          ElMessage.success('登录成功')
+        } else {
+          ElMessage.error('res.data.msg')
+        }
+      })
     }
 
     return {
