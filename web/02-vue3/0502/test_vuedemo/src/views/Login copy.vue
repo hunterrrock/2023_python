@@ -67,7 +67,7 @@
                 <div class="form-container-body">
                   <el-form :model="loginForm" :rules="rules" label-width="0px">
                     <el-form-item label="" prop="username">
-                      <el-input v-model="loginForm.username" placeholder="请输入用户名">
+                      <el-input v-model="username" placeholder="请输入用户名">
                         <template #prepend
                           ><el-icon><User /></el-icon
                         ></template>
@@ -77,7 +77,7 @@
                     <el-form-item label="" prop="password">
                       <el-input
                         ref="ruleFormRef"
-                        v-model="loginForm.password"
+                        v-model="password"
                         type="password"
                         placeholder="请输入密码"
                         show-password
@@ -87,7 +87,7 @@
                     </el-form-item>
 
                     <el-form-item label="">
-                      <el-input v-model="loginForm.captcha" placeholder="请输入验证码">
+                      <el-input v-model="captcha" placeholder="请输入验证码">
                         <template #prepend
                           ><Edit style="width: 1em; height: 1em; margin-right: 8px"
                         /></template>
@@ -95,7 +95,7 @@
                     </el-form-item>
 
                     <el-form-item label="">
-                      <el-checkbox v-model="loginForm.remember" label="记住密码" size="large" />
+                      <el-checkbox v-model="remember" label="记住密码" size="large" />
                     </el-form-item>
                     <el-form-item label="">
                       <el-button type="primary" @click="onSubmit">登录</el-button>
@@ -123,7 +123,7 @@ import { reactive, toRefs, ref } from 'vue'
 import { User, Edit } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
 // import request from '@/utils/request'
-import { login } from '@/utils/api'
+import {login} from '@/utils/api'
 export default {
   components: { User, Edit },
   setup() {
@@ -153,7 +153,7 @@ export default {
         /*
         - `change`：输入框的值发生变化时触发校验。
         - `input`：输入框的值发生变化时立即触发校验。
-      - `submit`：表单提交时触发校验。
+        - `submit`：表单提交时触发校验。
         */
         { required: true, message: '请输入密码！', trigger: 'blur' },
         { min: 3, max: 10, message: '请输入3-10个字符', trigger: 'blur' }
@@ -225,10 +225,10 @@ export default {
       //     ElMessage.error('res.data.msg')
       //   }
       // })
-      login(loginForm).then((res) => {
-        console.log(res)
-        console.log('loginForm', loginForm)
-        if (res.data.code === 200) {
+      login(loginForm).then((res)=>{
+          console.log(res)
+          console.log("loginForm",loginForm)
+          if (res.data.code === 200) {
           localStorage.setItem('loginToken', res.data.data.access)
           localStorage.setItem('refresh', res.data.data.refresh)
           localStorage.setItem('userId', res.data.data.userId)
@@ -237,6 +237,7 @@ export default {
         } else {
           ElMessage.error('res.data.msg')
         }
+
       })
     }
 
@@ -245,7 +246,7 @@ export default {
       remember,
       imageBase,
       onSubmit,
-      loginForm,
+      // loginForm
       ...toRefs(loginForm)
     }
   }
