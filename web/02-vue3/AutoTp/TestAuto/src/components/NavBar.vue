@@ -24,8 +24,16 @@
           </span>
           <template #dropdown>
             <el-dropdown-menu>
-              <el-dropdown-item>账户设置</el-dropdown-item>
-              <el-dropdown-item>退出登录</el-dropdown-item>
+              <el-dropdown-item>
+                <el-icon>
+                  <setting />
+                </el-icon>
+                账户设置</el-dropdown-item>
+              <el-dropdown-item @click="loginOut">
+                <el-icon>
+                  <switch-button />
+                </el-icon>    
+                退出登录</el-dropdown-item>
             </el-dropdown-menu>
           </template>
         </el-dropdown>
@@ -38,9 +46,15 @@
 import { reactive, toRefs, ref } from 'vue'
 import screenfull from 'screenfull'
 import { ElMessage } from 'element-plus'
+import { useRouter } from 'vue-router'
+
 
 export default {
+  
   setup() {
+      // 0.创建路由器对象
+    const router = useRouter()  
+
     const state = reactive({
       userName: localStorage.getItem('userName'),
       circleUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png'
@@ -61,7 +75,21 @@ export default {
         screenfull.toggle()
       }
     }
+    // 4.退出登录事件
+    const loginOut=()=>{
+        // 1.提示退出成功
+        // 2.跳转到登录页面
+        // 3.清空本地存储
+        ElMessage.success('退出成功！')
+        router.push('/login')
+        localStorage.clear()
+
+    } 
+
+
+
     return {
+      loginOut,
       fullScreen,
       swiechSide,
       isCollapse,

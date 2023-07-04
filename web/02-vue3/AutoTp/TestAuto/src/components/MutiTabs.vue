@@ -1,5 +1,8 @@
 <template>
-  <div>这是多Tab页组件</div>
+  <div>
+    <!-- 留个插槽位，类似APP.vue 给home的子路由-->
+      <RouterView />
+  </div>
 </template>
 
 <script>

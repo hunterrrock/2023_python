@@ -7,7 +7,31 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
+      // 子路由
+      children:[
+        {
+          path: '/Cases',
+          name: 'Cases',
+          component: () => import('../views/ApiAuto/Cases.vue')
+        },
+        {
+          path: '/Requests',
+          name: 'Requests',
+          component: () => import('../views/ApiAuto/Requests.vue')
+        },
+        {
+          path: '/Plans',
+          name: 'Plans',
+          component: () => import('../views/ApiAuto/Plans.vue')
+        },
+        {
+          path: '/Reports',
+          name: 'Reports',
+          component: () => import('../views/ApiAuto/Reports.vue')
+        }
+
+      ]
     },
     {
       path: '/login',
